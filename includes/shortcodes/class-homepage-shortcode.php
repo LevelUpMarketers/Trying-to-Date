@@ -165,10 +165,10 @@ class TTA_Homepage_Shortcode {
                 <section class="tta-section tta-intro">
                     <div class="tta-intro-inner">
                         <div>
-                            <h1><?php esc_html_e( 'Welcome to Trying to Adult RVA', 'tta' ); ?></h1>
-                            <p><?php esc_html_e( 'Trying to Adult RVA is a community for young adults in Richmond, Virginia who are ready to make real connections and have fun along the way.', 'tta' ); ?></p>
-                            <p><?php esc_html_e( 'We host a wide variety of events each month—like trivia nights, brewery hangs, outdoor adventures, cooking classes, and more—designed to help you meet new people and build lasting friendships.', 'tta' ); ?></p>
-                            <p><?php esc_html_e( 'Whether you’re looking for a new crew, a best friend, or just a fun night out, you’ll find a welcoming space here. Anyone 21+ is invited to join, and if you “feel” like a young adult, you’ll fit right in.', 'tta' ); ?></p>
+                            <h1><?php esc_html_e( 'Welcome to Trying to Date RVA', 'tta' ); ?></h1>
+                            <p><?php esc_html_e( 'Trying to Date RVA is a community for singles in Richmond, Virginia who are ready to meet new people, have fun, and maybe even find a spark.', 'tta' ); ?></p>
+                            <p><?php esc_html_e( 'We host a variety of events each month designed to help you connect, flirt, and enjoy memorable experiences with other singles.', 'tta' ); ?></p>
+                            <p><?php esc_html_e( 'Whether you\'re looking for a first date, a meaningful connection, or just a fun night out, you\'ll find a welcoming space here. Anyone 21+ is invited to join, and if you\'re open to meeting new people and exploring romance, you\'ll fit right in.', 'tta' ); ?></p>
                             <p><a class="button" href="<?php echo esc_url( home_url( '/events' ) ); ?>"><?php esc_html_e( 'Browse Events', 'tta' ); ?></a></p>
                         </div>
                         <div class="tta-intro-img">
