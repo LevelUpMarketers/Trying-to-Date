@@ -38,47 +38,37 @@ echo do_shortcode( $header_shortcode );
   );
 
   $features = array(
-    'monthly_cost'            => array(
+    'monthly_cost' => array(
       'label'      => __( 'Monthly Cost', 'tta' ),
       'non_member' => '$0',
       'basic'      => '$10',
       'premium'    => '$17',
     ),
-    'monthly_new_friend_social' => array(
-      'label'      => __( 'Monthly New Friend Social', 'tta' ),
-      'non_member' => __( 'Free', 'tta' ),
-      'basic'      => __( 'Free', 'tta' ),
-      'premium'    => __( 'Free', 'tta' ),
+    'discount_25'  => array(
+      'label'      => __( '25% Discount on Events', 'tta' ),
+      'non_member' => '',
+      'basic'      => array(
+        'type' => 'check',
+      ),
+      'premium'    => '',
     ),
-    'classic_events' => array(
-      'label'      => __( '3+ Classic Events Monthly', 'tta' ),
-      'non_member' => '$5 ' . __( 'access passes', 'tta' ),
-      'basic'      => __( 'Free access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'special_events' => array(
-      'label'      => __( '3+ Special Events Monthly', 'tta' ),
-      'non_member' => '$7 ' . __( 'access passes', 'tta' ),
-      'basic'      => '$5 ' . __( 'access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'guess_pass' => array(
-      'label'      => __( 'Guest Pass', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( '1 Pass', 'tta' ),
-      'premium'    => __( '1 Pass', 'tta' ),
+    'discount_50'  => array(
+      'label'      => __( '50% Discount on Events', 'tta' ),
+      'non_member' => '',
+      'basic'      => '',
+      'premium'    => array(
+        'type' => 'check',
+      ),
     ),
     'waitlist_notice' => array(
-      'label'      => __( 'Advanced Notice on Waitlist Openings', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'Yes', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
-    ),
-    'special_rates' => array(
-      'label'      => __( 'Special Rates for Select Events', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'No', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
+      'label'      => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
+      'non_member' => '',
+      'basic'      => array(
+        'type' => 'check',
+      ),
+      'premium'    => array(
+        'type' => 'check',
+      ),
     ),
   );
 ?>
@@ -96,8 +86,18 @@ echo do_shortcode( $header_shortcode );
       <?php foreach ( $features as $feature ) : ?>
         <tr>
           <td><?php echo esc_html( $feature['label'] ); ?></td>
-          <?php foreach ( $tiers as $tier_key => $tier_label ) : ?>
-            <td><?php echo esc_html( $feature[ $tier_key ] ); ?></td>
+          <?php foreach ( $tiers as $tier_key => $tier_label ) :
+            $value = isset( $feature[ $tier_key ] ) ? $feature[ $tier_key ] : '';
+            $is_check = is_array( $value ) && isset( $value['type'] ) && 'check' === $value['type'];
+            ?>
+            <td class="<?php echo esc_attr( $is_check ? 'tta-membership-check-cell' : '' ); ?>">
+              <?php if ( $is_check ) : ?>
+                <span class="tta-membership-check" aria-hidden="true">&check;</span>
+                <span class="screen-reader-text"><?php esc_html_e( 'Included', 'tta' ); ?></span>
+              <?php else : ?>
+                <?php echo esc_html( $value ); ?>
+              <?php endif; ?>
+            </td>
           <?php endforeach; ?>
         </tr>
       <?php endforeach; ?>
@@ -126,7 +126,18 @@ echo do_shortcode( $header_shortcode );
           <?php foreach ( $features as $feature ) : ?>
             <li>
               <span class="tta-feature-label"><?php echo esc_html( $feature['label'] ); ?></span>
-              <span class="tta-feature-value"><?php echo esc_html( $feature[ $tier_key ] ); ?></span>
+              <?php
+              $value     = isset( $feature[ $tier_key ] ) ? $feature[ $tier_key ] : '';
+              $is_check  = is_array( $value ) && isset( $value['type'] ) && 'check' === $value['type'];
+              ?>
+              <span class="tta-feature-value">
+                <?php if ( $is_check ) : ?>
+                  <span class="tta-membership-check" aria-hidden="true">&check;</span>
+                  <span class="screen-reader-text"><?php esc_html_e( 'Included', 'tta' ); ?></span>
+                <?php else : ?>
+                  <?php echo esc_html( $value ); ?>
+                <?php endif; ?>
+              </span>
             </li>
           <?php endforeach; ?>
         </ul>
