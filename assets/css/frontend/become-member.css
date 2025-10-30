@@ -27,9 +27,13 @@
   text-align: center;
 }
 
-.tta-membership-table td.check {
-  color: green;
-  font-weight: bold;
+.tta-membership-check {
+  color: #bf382f;
+  font-weight: 700;
+}
+
+.tta-membership-check-cell {
+  text-align: center;
 }
 
 .tta-membership-buttons {
