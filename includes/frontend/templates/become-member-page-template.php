@@ -44,21 +44,17 @@ echo do_shortcode( $header_shortcode );
       'basic'      => '$10',
       'premium'    => '$17',
     ),
-    'discount_25'  => array(
-      'label'      => __( '25% Discount on Events', 'tta' ),
-      'non_member' => '',
-      'basic'      => array(
-        'type' => 'check',
-      ),
-      'premium'    => '',
+    'monthly_singles_social' => array(
+      'label'      => __( 'Monthly Singles Social', 'tta' ),
+      'non_member' => '$10',
+      'basic'      => '$5',
+      'premium'    => __( 'Free', 'tta' ),
     ),
-    'discount_50'  => array(
-      'label'      => __( '50% Discount on Events', 'tta' ),
+    'special_dating_events'  => array(
+      'label'      => __( 'Special Dating Events', 'tta' ),
       'non_member' => '',
-      'basic'      => '',
-      'premium'    => array(
-        'type' => 'check',
-      ),
+      'basic'      => __( '20% Discount', 'tta' ),
+      'premium'    => __( '50% Discount', 'tta' ),
     ),
     'waitlist_notice' => array(
       'label'      => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
