@@ -3,7 +3,7 @@
 ## Overview
 The **Login or Create Account Page** template provides a dedicated landing
 page where visitors can either log in with their existing WordPress account
-or register for a new Trying To Adult account. The template is located at
+or register for a new Trying To Date account. The template is located at
 `includes/frontend/templates/login-register-page-template.php` and can be
 assigned to any WordPress page via the **Page Attributes → Template**
 dropdown in the editor.

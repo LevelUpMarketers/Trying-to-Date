@@ -4,7 +4,7 @@ jQuery(function($){
     var date  = $('.tta-event-date').text().trim();
     var time  = $('.tta-event-time').text().trim();
     var venue = $('.tta-event-details-icon-after strong:contains("Venue")').next('a').text().trim();
-    var msg = 'Check out this upcoming Trying to Adult event I\'m attending! ' + title;
+    var msg = 'Check out this upcoming Trying to Date event I\'m attending! ' + title;
     if(date) msg += ' - ' + date;
     if(time) msg += ' at ' + time;
     if(venue) msg += ' at ' + venue;

@@ -50,7 +50,7 @@ All fields are sanitized with the helper functions from `InputSanitization.md`. 
 Default values are provided on initial install:
 
 - **Purchase Email Subject**: "Thanks for Registering!"
-- **Purchase Email Body**: "You're in! Thank for registering for our upcoming Trying To Adult event. The details of the event are below. Please keep this email, as you'll need to present this to the Event Host or Volunteer when arriving at your event."
+- **Purchase Email Body**: "You're in! Thank for registering for our upcoming Trying To Date event. The details of the event are below. Please keep this email, as you'll need to present this to the Event Host or Volunteer when arriving at your event."
 - **Purchase SMS**: "Thanks for registering! View your upcoming events at "
 - **24-Hour Reminder Email Body**: "Heads-up! Your event is just 1 day away! Below are the details."
 - **2-Hour Reminder Email Body**: "Your event is only 2 hours away! Below are the details."
@@ -246,7 +246,7 @@ returns both values combined in a single string.
 
 ## Email Delivery
 
-All plugin emails are sent from "Trying To Adult" (<noreply@tryingtoadultrva.com>) and automatically Bcc onlineservices@leveluprichmond.com for internal tracking.
+All plugin emails are sent from "Trying To Date" (<noreply@tryingtoadultrva.com>) and automatically Bcc onlineservices@leveluprichmond.com for internal tracking.
 
 All outgoing messages are dispatched by the `TTA_Email_Handler` class. The handler is loaded on plugin init and is responsible for reading the templates saved on the **Email & SMS** page. After a transaction is recorded, `send_purchase_emails()` groups the purchased items by event and emails the **Successful Event Purchase** template. The purchasing member receives one email and each attendee gets a personalized copy where tokens like `{attendee_first_name}` reflect their own information. Duplicate addresses are skipped so each email address only receives one message.
 

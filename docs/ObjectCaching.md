@@ -1,6 +1,6 @@
 # Object Caching
 
-This document outlines the object caching layer used by the Trying To Adult Management Plugin.
+This document outlines the object caching layer used by the Trying To Date Management Plugin.
 
 ## Overview
 

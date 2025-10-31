@@ -248,15 +248,15 @@ function tta_build_order_description() {
     // Include membership purchase if present.
     $level = $_SESSION['tta_membership_purchase'] ?? '';
     if ( 'basic' === $level ) {
-        $parts[] = 'Trying to Adult Standard Membership';
+        $parts[] = 'Trying to Date Standard Membership';
     } elseif ( 'premium' === $level ) {
-        $parts[] = 'Trying to Adult Premium Membership';
+        $parts[] = 'Trying to Date Premium Membership';
     } elseif ( 'reentry' === $level ) {
-        $parts[] = 'Trying to Adult Re-Entry Ticket';
+        $parts[] = 'Trying to Date Re-Entry Ticket';
     }
 
     if ( empty( $parts ) ) {
-        $parts[] = 'Trying to Adult RVA Order';
+        $parts[] = 'Trying to Date RVA Order';
     }
 
     $desc = implode( '; ', $parts );

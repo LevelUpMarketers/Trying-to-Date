@@ -124,10 +124,10 @@ class TTA_Settings_Admin {
                         $tag   = '';
                         $level = '';
                         if ( abs( $amount - 5.0 ) < 0.01 ) {
-                            $tag   = 'Trying to Adult Standard Membership';
+                            $tag   = 'Trying to Date Standard Membership';
                             $level = 'basic';
                         } elseif ( abs( $amount - 10.0 ) < 0.01 ) {
-                            $tag   = 'Trying to Adult Premium Membership';
+                            $tag   = 'Trying to Date Premium Membership';
                             $level = 'premium';
                         }
 

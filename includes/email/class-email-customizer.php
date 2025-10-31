@@ -22,7 +22,7 @@ class TTA_Email_Customizer {
      * @return string Sender name.
      */
     public static function from_name() {
-        return 'Trying To Adult';
+        return 'Trying To Date';
     }
 
     /**
