@@ -25,7 +25,7 @@ class TTA_Comms_Admin {
                 'category'    => 'Event Confirmation',
                 'description' => __('Sent after a member buys tickets to an event.', 'tta'),
                 'email_subject' => __('Thanks for Registering!', 'tta'),
-                'email_body'  => __("You're in! Thank for registering for our upcoming Trying To Adult event. The details of the event are below. Please keep this email, as you'll need to present this to the Event Host or Volunteer when arriving at your event.", 'tta'),
+                'email_body'  => __("You're in! Thank for registering for our upcoming Trying To Date event. The details of the event are below. Please keep this email, as you'll need to present this to the Event Host or Volunteer when arriving at your event.", 'tta'),
                 'sms_text'    => __('Thanks for registering! View your upcoming events at ', 'tta'),
             ],
             'membership_purchase' => [
@@ -180,7 +180,7 @@ class TTA_Comms_Admin {
                 'email_subject' => __( 'Important update about your event', 'tta' ),
                 'email_body'    => '',
                 'email_opening' => __( 'Hi {attendee_first_name},', 'tta' ),
-                'email_closing' => __( 'Thanks from the Trying to Adult Team', 'tta' ),
+                'email_closing' => __( 'Thanks from the Trying to Date Team', 'tta' ),
                 'sms_text'      => '',
             ],
             'post_event_review' => [

@@ -1,11 +1,11 @@
 # AGENTS.md
 
-Guidance for AI agents (Codex/ChatGPT) working in the Trying To Adult RVA repository.
+Guidance for AI agents (Codex/ChatGPT) working in the Trying To Date RVA repository.
 
 ---
 
 ## 🧰 Repository Overview
-- **Site:** Full WordPress site for Trying To Adult RVA.
+- **Site:** Full WordPress site for Trying To Date RVA.
 - **Primary Plugin:** `app/public/wp-content/plugins/tta-management-plugin`
   - Unless a task explicitly states otherwise, assume all questions and changes relate to this plugin.
   - The plugin must remain self‑contained so it can be copied to another WordPress installation and function on its own.

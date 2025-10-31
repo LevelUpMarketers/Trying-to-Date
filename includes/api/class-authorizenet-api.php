@@ -232,7 +232,7 @@ public function charge( $amount, $card_number, $exp_date, $card_code, array $bil
     // Order
     $invoice = preg_replace( '/[^A-Za-z0-9\-_.]/', '', (string) ( $billing['invoice'] ?? ( 'TAR-' . time() ) ) );
     $invoice = substr( $invoice, 0, 20 );
-    $desc    = tta_normalize_authnet_description( $billing['description'] ?? 'Trying to Adult RVA Order' );
+    $desc    = tta_normalize_authnet_description( $billing['description'] ?? 'Trying to Date RVA Order' );
     $order   = new AnetAPI\OrderType();
     $order->setInvoiceNumber( $invoice );
     $order->setDescription( $desc );

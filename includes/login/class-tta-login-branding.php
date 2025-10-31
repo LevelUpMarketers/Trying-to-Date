@@ -66,7 +66,7 @@ class TTA_Login_Branding {
             $reset_link,
             '',
             __( "We're looking forward to seeing you at the next event!", 'tta' ),
-            __( '- The Trying to Adult Team', 'tta' ),
+            __( '- The Trying to Date Team', 'tta' ),
         ];
 
         return implode( "\n", $lines );

@@ -1,6 +1,6 @@
 # Operator Testing Guide
 
-This document provides a repeatable process for ChatGPT Operator to validate every feature of the Trying To Adult Management Plugin on a live site.
+This document provides a repeatable process for ChatGPT Operator to validate every feature of the Trying To Date Management Plugin on a live site.
 
 ## Preparation
 
