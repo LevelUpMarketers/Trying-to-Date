@@ -42,8 +42,8 @@ the `membership_level` updated to `basic` or `premium` depending on the charge
 amount. To ensure Authorize.Net associates the correct billing method, the
 subscription request references the payment profile via the
 `customerPaymentProfileId` field.
-Transactions for $10 are tagged as **Trying to Adult Standard Membership** while $17
-charges become **Trying to Adult Premium Membership** so the subscription is
+Transactions for $10 are tagged as **Trying to Date Standard Membership** while $17
+charges become **Trying to Date Premium Membership** so the subscription is
 clearly labeled in Authorize.Net. The results of each conversion are displayed
 on the settings page and written to the debug log.
 
