@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Trying To Adult Management Plugin
+ * Plugin Name: Trying To Date Management Plugin
  * Plugin URI: https://example.com
  * Description: Custom plugin for Members, Events, Tickets management with waitlist, notifications, and Authorize.Net integration.
  * Version: 1.0.6

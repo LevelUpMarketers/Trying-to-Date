@@ -1,6 +1,6 @@
 # Cart and Checkout Flow
 
-This document summarizes the current logic around the cart and checkout process in the Trying To Adult Management Plugin. Future documentation will cover other areas such as creating or editing events and members.
+This document summarizes the current logic around the cart and checkout process in the Trying To Date Management Plugin. Future documentation will cover other areas such as creating or editing events and members.
 
 ## Overview
 
