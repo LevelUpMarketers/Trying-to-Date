@@ -38,47 +38,82 @@ echo do_shortcode( $header_shortcode );
   );
 
   $features = array(
-    'monthly_cost'            => array(
-      'label'      => __( 'Monthly Cost', 'tta' ),
-      'non_member' => '$0',
-      'basic'      => '$10',
-      'premium'    => '$17',
+    'monthly_cost'          => array(
+      'label' => __( 'Monthly Cost', 'tta' ),
+      'tiers' => array(
+        'non_member' => array(
+          'content'        => '$0',
+          'mobile_content' => '$0',
+        ),
+        'basic'      => array(
+          'content'        => '$10',
+          'mobile_content' => '$10',
+        ),
+        'premium'    => array(
+          'content'        => '$17',
+          'mobile_content' => '$17',
+        ),
+      ),
     ),
-    'monthly_new_friend_social' => array(
-      'label'      => __( 'Monthly New Friend Social', 'tta' ),
-      'non_member' => __( 'Free', 'tta' ),
-      'basic'      => __( 'Free', 'tta' ),
-      'premium'    => __( 'Free', 'tta' ),
+    'monthly_singles_social' => array(
+      'label' => __( 'Monthly Singles Social', 'tta' ),
+      'tiers' => array(
+        'non_member' => array(
+          'content'        => '$10',
+          'mobile_content' => '$10',
+        ),
+        'basic'      => array(
+          'content'        => '$5',
+          'mobile_content' => '$5',
+        ),
+        'premium'    => array(
+          'content'        => __( 'Free', 'tta' ),
+          'mobile_content' => __( 'Free', 'tta' ),
+        ),
+      ),
     ),
-    'classic_events' => array(
-      'label'      => __( '3+ Classic Events Monthly', 'tta' ),
-      'non_member' => '$5 ' . __( 'access passes', 'tta' ),
-      'basic'      => __( 'Free access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
+    'special_dating_events'  => array(
+      'label' => __( 'Special Dating Events', 'tta' ),
+      'tiers' => array(
+        'non_member' => array(
+          'content'        => '',
+          'mobile_content' => '',
+        ),
+        'basic'      => array(
+          'content'        => __( '20% Discount', 'tta' ),
+          'mobile_content' => __( '20% Discount', 'tta' ),
+        ),
+        'premium'    => array(
+          'content'        => __( '50% Discount', 'tta' ),
+          'mobile_content' => __( '50% Discount', 'tta' ),
+        ),
+      ),
     ),
-    'special_events' => array(
-      'label'      => __( '3+ Special Events Monthly', 'tta' ),
-      'non_member' => '$7 ' . __( 'access passes', 'tta' ),
-      'basic'      => '$5 ' . __( 'access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
+    'waitlist_notice'        => array(
+      'label' => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
+      'tiers' => array(
+        'non_member' => array(
+          'content'        => '',
+          'mobile_content' => '',
+        ),
+        'basic'      => array(
+          'content'        => '<span class="tta-membership-check" aria-hidden="true">&#10003;</span><span class="screen-reader-text">' . esc_html__( 'Included', 'tta' ) . '</span>',
+          'mobile_content' => __( 'Included', 'tta' ),
+          'class'          => 'tta-membership-check-cell',
+        ),
+        'premium'    => array(
+          'content'        => '<span class="tta-membership-check" aria-hidden="true">&#10003;</span><span class="screen-reader-text">' . esc_html__( 'Included', 'tta' ) . '</span>',
+          'mobile_content' => __( 'Included', 'tta' ),
+          'class'          => 'tta-membership-check-cell',
+        ),
+      ),
     ),
-    'guess_pass' => array(
-      'label'      => __( 'Guest Pass', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( '1 Pass', 'tta' ),
-      'premium'    => __( '1 Pass', 'tta' ),
-    ),
-    'waitlist_notice' => array(
-      'label'      => __( 'Advanced Notice on Waitlist Openings', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'Yes', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
-    ),
-    'special_rates' => array(
-      'label'      => __( 'Special Rates for Select Events', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'No', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
+  );
+
+  $cell_allowed_html = array(
+    'span' => array(
+      'class'       => array(),
+      'aria-hidden' => array(),
     ),
   );
 ?>
@@ -97,7 +132,14 @@ echo do_shortcode( $header_shortcode );
         <tr>
           <td><?php echo esc_html( $feature['label'] ); ?></td>
           <?php foreach ( $tiers as $tier_key => $tier_label ) : ?>
-            <td><?php echo esc_html( $feature[ $tier_key ] ); ?></td>
+            <?php
+            $tier_data   = isset( $feature['tiers'][ $tier_key ] ) ? $feature['tiers'][ $tier_key ] : array();
+            $cell_class  = ! empty( $tier_data['class'] ) ? ' class="' . esc_attr( $tier_data['class'] ) . '"' : '';
+            $cell_content = isset( $tier_data['content'] ) ? $tier_data['content'] : '';
+            ?>
+            <td<?php echo $cell_class; ?>>
+              <?php echo '' !== $cell_content ? wp_kses( $cell_content, $cell_allowed_html ) : ''; ?>
+            </td>
           <?php endforeach; ?>
         </tr>
       <?php endforeach; ?>
@@ -124,9 +166,19 @@ echo do_shortcode( $header_shortcode );
         <h2><?php echo esc_html( $tier_label ); ?></h2>
         <ul>
           <?php foreach ( $features as $feature ) : ?>
+            <?php
+            $tier_data      = isset( $feature['tiers'][ $tier_key ] ) ? $feature['tiers'][ $tier_key ] : array();
+            $mobile_content = '';
+
+            if ( isset( $tier_data['mobile_content'] ) && '' !== $tier_data['mobile_content'] ) {
+              $mobile_content = $tier_data['mobile_content'];
+            } elseif ( isset( $tier_data['content'] ) ) {
+              $mobile_content = wp_strip_all_tags( $tier_data['content'] );
+            }
+            ?>
             <li>
               <span class="tta-feature-label"><?php echo esc_html( $feature['label'] ); ?></span>
-              <span class="tta-feature-value"><?php echo esc_html( $feature[ $tier_key ] ); ?></span>
+              <span class="tta-feature-value"><?php echo esc_html( $mobile_content ); ?></span>
             </li>
           <?php endforeach; ?>
         </ul>

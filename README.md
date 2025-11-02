@@ -2,7 +2,7 @@
 
 This repository contains the full WordPress site for **Trying To Adult RVA**.
 
-## Trying To Adult Management Plugin
+## Trying To Date Management Plugin
 
 Most development work happens inside the plugin located at:
 
