@@ -405,7 +405,7 @@ if ( $dob_value ) {
             <?php
             $optin_notice = sprintf(
                 /* translators: %s: privacy policy URL */
-                __( 'By checking the boxes above, you agree to receive marketing and/or non-marketing emails & text messages from Trying To Adult RVA, to include communications such as event sign-up confirmations, 24-hour & 3-hour event reminders, and other communications from event Hosts & Volunteers in the event of last-minute event changes or other relevant information to provide you with the best experience possible. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
+                __( 'By checking the boxes above, you agree to receive marketing and/or non-marketing emails & text messages from Trying To Date RVA, to include communications such as event sign-up confirmations, 24-hour & 3-hour event reminders, and other communications from event Hosts & Volunteers in the event of last-minute event changes or other relevant information to provide you with the best experience possible. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
                 esc_url( home_url( '/privacy-policy/' ) )
             );
             echo '<p class="edit-input tta-optin-help">' . wp_kses(

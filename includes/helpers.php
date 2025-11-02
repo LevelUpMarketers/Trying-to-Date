@@ -5325,12 +5325,12 @@ function tta_render_attendee_fields( TTA_Cart $cart, $disabled = false ) {
                 $privacy_url = esc_url( home_url( '/privacy-policy/' ) );
                 $sms_message = sprintf(
                     /* translators: %s: privacy policy URL */
-                    __( 'I agree to receive non-marketing text messages from Trying to Adult RVA about my event sign-up, including 24-hour and 3-hours event reminder texts. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
+                    __( 'I agree to receive non-marketing text messages from Trying to Date RVA about my event sign-up, including 24-hour and 3-hours event reminder texts. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
                     $privacy_url
                 );
                 $email_message = sprintf(
                     /* translators: %s: privacy policy URL */
-                    __( 'I agree to receive non-marketing emails from Trying to Adult RVA about my event sign-up, including 24-hour and 3-hours event reminder emails. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
+                    __( 'I agree to receive non-marketing emails from Trying to Date RVA about my event sign-up, including 24-hour and 3-hours event reminder emails. <a href="%s">Read our Privacy Policy here.</a>', 'tta' ),
                     $privacy_url
                 );
                 $allowed_link = [
