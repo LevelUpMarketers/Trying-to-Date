@@ -5884,7 +5884,7 @@ function tta_render_attendee_fields( TTA_Cart $cart, $disabled = false ) {
                 $sms_message = sprintf(
                     /* translators: 1: privacy policy URL, 2: terms and conditions URL */
                     __(
-                        'I agree to receive <strong>event update text messages</strong> from <strong>Trying to Adult RVA</strong> related to my registration (e.g., confirmation, 24-hour and 3-hour reminders, last-minute changes). <span class="tta-sms-disclosure">Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.</span> <a href="%1$s">Privacy Policy</a> · <a href="%2$s">Terms & Conditions</a>',
+                        'I agree to receive <strong>event update text messages</strong> from <strong>Trying to Date RVA</strong> related to my registration (e.g., confirmation, 24-hour and 3-hour reminders, last-minute changes). <span class="tta-sms-disclosure">Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.</span> <a href="%1$s">Privacy Policy</a> · <a href="%2$s">Terms & Conditions</a>',
                         'tta'
                     ),
                     $privacy_url,
@@ -5894,7 +5894,7 @@ function tta_render_attendee_fields( TTA_Cart $cart, $disabled = false ) {
                 $email_message = sprintf(
                     /* translators: 1: privacy policy URL, 2: terms and conditions URL */
                     __(
-                        'I agree to receive <strong>event update emails</strong> from <strong>Trying to Adult RVA</strong> related to my registration (e.g., confirmation, 24-hour and 3-hour reminders, last-minute changes). <a href="%1$s">Privacy Policy</a> · <a href="%2$s">Terms & Conditions</a>',
+                        'I agree to receive <strong>event update emails</strong> from <strong>Trying to Date RVA</strong> related to my registration (e.g., confirmation, 24-hour and 3-hour reminders, last-minute changes). <a href="%1$s">Privacy Policy</a> · <a href="%2$s">Terms & Conditions</a>',
                         'tta'
                     ),
                     $privacy_url,
