@@ -15,8 +15,8 @@ class TTA_Partners_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Partners',
-            'TTA Partners',
+            'TTD Partners',
+            'TTD Partners',
             'manage_options',
             'tta-partners',
             [ $this, 'render_page' ],
@@ -37,7 +37,7 @@ class TTA_Partners_Admin {
         }
 
         echo '<div class="wrap">';
-        echo '<h1 class="wp-heading-inline">' . esc_html__( 'TTA Partners', 'tta' ) . '</h1>';
+        echo '<h1 class="wp-heading-inline">' . esc_html__( 'TTD Partners', 'tta' ) . '</h1>';
         echo '<a href="' . esc_url( admin_url( 'admin.php?page=tta-partners&tab=create' ) ) . '" class="page-title-action">' . esc_html__( 'Add New', 'tta' ) . '</a>';
         echo '<hr class="wp-header-end">';
 

@@ -13,8 +13,8 @@ class TTA_Discount_Codes_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Discount Codes',
-            'TTA Discount Codes',
+            'TTD Discount Codes',
+            'TTD Discount Codes',
             'manage_options',
             'tta-discount-codes',
             [ $this, 'render_page' ],

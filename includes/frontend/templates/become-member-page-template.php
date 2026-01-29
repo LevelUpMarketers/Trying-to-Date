@@ -11,7 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 get_header();
 
-$header_shortcode = '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(https://trying-to-adult-rva-2025.local/wp-content/uploads/2022/12/IMG-4418.png?id=70) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">BECOME A MEMBER</p>[/vc_column_text][/vc_column][/vc_row]';
+$header_image_url = esc_url( add_query_arg( 'id', '70', home_url( '/wp-content/uploads/2022/12/IMG-4418.png' ) ) );
+$header_shortcode = sprintf(
+    '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(%s) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">BECOME A MEMBER</p>[/vc_column_text][/vc_column][/vc_row]',
+    $header_image_url
+);
 echo do_shortcode( $header_shortcode );
 ?>
 <div class="tta-become-member-wrap">
@@ -38,49 +42,73 @@ echo do_shortcode( $header_shortcode );
   );
 
   $features = array(
-    'monthly_cost'            => array(
-      'label'      => __( 'Monthly Cost', 'tta' ),
-      'non_member' => '$0',
-      'basic'      => '$10',
-      'premium'    => '$17',
+    'monthly_cost' => array(
+      'label'  => __( 'Monthly Cost', 'tta' ),
+      'values' => array(
+        'non_member' => '$0',
+        'basic'      => '$10',
+        'premium'    => '$17',
+      ),
     ),
-    'monthly_new_friend_social' => array(
-      'label'      => __( 'Monthly New Friend Social', 'tta' ),
-      'non_member' => __( 'Free', 'tta' ),
-      'basic'      => __( 'Free', 'tta' ),
-      'premium'    => __( 'Free', 'tta' ),
+    'monthly_singles_social' => array(
+      'label'  => __( 'Monthly Singles Social', 'tta' ),
+      'values' => array(
+        'non_member' => '$10',
+        'basic'      => '$5',
+        'premium'    => __( 'Free', 'tta' ),
+      ),
     ),
-    'classic_events' => array(
-      'label'      => __( '3+ Classic Events Monthly', 'tta' ),
-      'non_member' => '$5 ' . __( 'access passes', 'tta' ),
-      'basic'      => __( 'Free access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'special_events' => array(
-      'label'      => __( '3+ Special Events Monthly', 'tta' ),
-      'non_member' => '$7 ' . __( 'access passes', 'tta' ),
-      'basic'      => '$5 ' . __( 'access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'guess_pass' => array(
-      'label'      => __( 'Guest Pass', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( '1 Pass', 'tta' ),
-      'premium'    => __( '1 Pass', 'tta' ),
+    'special_dating_events' => array(
+      'label'  => __( 'Special Dating Events', 'tta' ),
+      'values' => array(
+        'non_member' => '',
+        'basic'      => __( '20% Discount', 'tta' ),
+        'premium'    => __( '50% Discount', 'tta' ),
+      ),
     ),
     'waitlist_notice' => array(
-      'label'      => __( 'Advanced Notice on Waitlist Openings', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'Yes', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
-    ),
-    'special_rates' => array(
-      'label'      => __( 'Special Rates for Select Events', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'No', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
+      'label'  => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
+      'values' => array(
+        'non_member' => '',
+        'basic'      => array(
+          'check'       => true,
+          'mobile_text' => __( 'Included', 'tta' ),
+        ),
+        'premium'    => array(
+          'check'       => true,
+          'mobile_text' => __( 'Included', 'tta' ),
+        ),
+      ),
     ),
   );
+
+  $render_membership_value = static function ( $value, $context ) {
+    if ( is_array( $value ) && ! empty( $value['check'] ) ) {
+      if ( 'mobile' === $context ) {
+        return array(
+          'class' => '',
+          'html'  => esc_html( $value['mobile_text'] ?? '' ),
+        );
+      }
+
+      return array(
+        'class' => 'tta-membership-check-cell',
+        'html'  => '<span class="tta-membership-check" aria-hidden="true">✓</span><span class="screen-reader-text">' . esc_html__( 'Included', 'tta' ) . '</span>',
+      );
+    }
+
+    if ( '' === $value || null === $value ) {
+      return array(
+        'class' => '',
+        'html'  => '',
+      );
+    }
+
+    return array(
+      'class' => '',
+      'html'  => esc_html( $value ),
+    );
+  };
 ?>
 
   <table class="tta-membership-table">
@@ -97,7 +125,11 @@ echo do_shortcode( $header_shortcode );
         <tr>
           <td><?php echo esc_html( $feature['label'] ); ?></td>
           <?php foreach ( $tiers as $tier_key => $tier_label ) : ?>
-            <td><?php echo esc_html( $feature[ $tier_key ] ); ?></td>
+            <?php
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '', 'table' );
+            $cell_class     = $rendered_value['class'] ? ' class="' . esc_attr( $rendered_value['class'] ) . '"' : '';
+            ?>
+            <td<?php echo $cell_class; ?>><?php echo $rendered_value['html']; ?></td>
           <?php endforeach; ?>
         </tr>
       <?php endforeach; ?>
@@ -124,9 +156,13 @@ echo do_shortcode( $header_shortcode );
         <h2><?php echo esc_html( $tier_label ); ?></h2>
         <ul>
           <?php foreach ( $features as $feature ) : ?>
+            <?php
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '', 'mobile' );
+            $value_class    = $rendered_value['class'] ? ' ' . esc_attr( $rendered_value['class'] ) : '';
+            ?>
             <li>
               <span class="tta-feature-label"><?php echo esc_html( $feature['label'] ); ?></span>
-              <span class="tta-feature-value"><?php echo esc_html( $feature[ $tier_key ] ); ?></span>
+              <span class="tta-feature-value<?php echo $value_class; ?>"><?php echo $rendered_value['html']; ?></span>
             </li>
           <?php endforeach; ?>
         </ul>

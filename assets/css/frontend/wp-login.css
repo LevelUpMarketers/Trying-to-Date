@@ -2,8 +2,8 @@
  * Custom branding for the WordPress core login, password reset, and error pages.
  */
 .login h1 a {
-  background-image: url(/wp-content/uploads/2022/12/TTA2_Full-1.png);
-  background-image: none, url(/wp-content/uploads/2022/12/TTA2_Full-1.png);
+  background-image: url(https://tryingtodaterva.com/wp-content/uploads/2025/10/Trying-To-Date-RVA-Logo-1.png);
+  background-image: none, url(https://tryingtodaterva.com/wp-content/uploads/2025/10/Trying-To-Date-RVA-Logo-1.png);
   background-size: 155px;
   background-position: center top;
   background-repeat: no-repeat;

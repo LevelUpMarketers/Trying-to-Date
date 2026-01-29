@@ -714,7 +714,7 @@ $tickets = $wpdb->get_results(
       <?php esc_html_e( 'Export All Attendees', 'tta' ); ?>
     </button>
     <div class="tta-admin-progress-spinner-div">
-        <img class="tta-admin-progress-spinner-svg" src="http://trying-to-adult-rva-2025.local/wp-content/plugins/tta-management-plugin/assets/images/admin/loading.svg" alt="Loading…" style="display:none; opacity:0;">
+        <img class="tta-admin-progress-spinner-svg" src="<?php echo esc_url( TTA_PLUGIN_URL . 'assets/images/admin/loading.svg' ); ?>" alt="Loading…" style="display:none; opacity:0;">
     </div>
     <div class="tta-admin-progress-response-div">
         <p class="tta-admin-progress-response-p"></p>

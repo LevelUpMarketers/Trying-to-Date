@@ -138,6 +138,8 @@ class TTA_Assets {
                     'email_logs_nonce'    => wp_create_nonce( 'tta_email_logs_action' ),
                     'email_log_clear_nonce' => wp_create_nonce( 'tta_email_clear_action' ),
                     'banned_members_nonce' => wp_create_nonce( 'tta_banned_members_action' ),
+                    'admin_bin_icon'      => esc_url( TTA_PLUGIN_URL . 'assets/images/admin/bin.svg' ),
+                    'admin_loading_icon'  => esc_url( TTA_PLUGIN_URL . 'assets/images/admin/loading.svg' ),
                     'checkinPreviewPlaceholder' => __( '[Message typed on the Event Check-In page]', 'tta' ),
                     'sample_event'        => ( function() {
                         $e = tta_get_next_event();

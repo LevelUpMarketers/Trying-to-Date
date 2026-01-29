@@ -17,8 +17,8 @@ class TTA_Settings_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Settings',
-            'TTA Settings',
+            'TTD Settings',
+            'TTD Settings',
             'manage_options',
             'tta-settings',
             [ $this, 'render_page' ],
@@ -33,7 +33,7 @@ class TTA_Settings_Admin {
         }
 
         $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
-        echo '<div class="wrap"><h1>TTA Settings</h1>';
+        echo '<div class="wrap"><h1>TTD Settings</h1>';
         echo '<h2 class="nav-tab-wrapper">';
         echo '<a href="?page=tta-settings&tab=general" class="nav-tab ' . ( 'general' === $active_tab ? 'nav-tab-active' : '' ) . '">' . esc_html__( 'General Settings', 'tta' ) . '</a>';
         echo '<a href="?page=tta-settings&tab=logging" class="nav-tab ' . ( 'logging' === $active_tab ? 'nav-tab-active' : '' ) . '">' . esc_html__( 'Logging', 'tta' ) . '</a>';
@@ -124,10 +124,10 @@ class TTA_Settings_Admin {
                         $tag   = '';
                         $level = '';
                         if ( abs( $amount - 5.0 ) < 0.01 ) {
-                            $tag   = 'Trying to Adult Standard Membership';
+                            $tag   = 'Trying to Date Standard Membership';
                             $level = 'basic';
                         } elseif ( abs( $amount - 10.0 ) < 0.01 ) {
-                            $tag   = 'Trying to Adult Premium Membership';
+                            $tag   = 'Trying to Date Premium Membership';
                             $level = 'premium';
                         }
 

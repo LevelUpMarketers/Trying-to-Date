@@ -12,8 +12,8 @@ class TTA_Refund_Requests_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Refund Requests',
-            'TTA Refund Requests',
+            'TTD Refund Requests',
+            'TTD Refund Requests',
             'manage_options',
             'tta-refund-requests',
             [ $this, 'render_page' ],

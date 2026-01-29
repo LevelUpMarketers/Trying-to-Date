@@ -7,8 +7,8 @@ class TTA_Tickets_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Tickets',
-            'TTA Tickets',
+            'TTD Tickets',
+            'TTD Tickets',
             'manage_options',
             'tta-tickets',
             [ $this, 'render_page' ],
