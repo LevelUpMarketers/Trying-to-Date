@@ -32,6 +32,11 @@
   font-weight: bold;
 }
 
+.tta-membership-check-cell .tta-membership-check {
+  color: #bf382f;
+  font-weight: 700;
+}
+
 .tta-membership-buttons {
   margin-top: 20px;
 }
@@ -197,4 +202,3 @@
     padding: 0;
   }
 }
-

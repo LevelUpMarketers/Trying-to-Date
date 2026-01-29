@@ -38,49 +38,60 @@ echo do_shortcode( $header_shortcode );
   );
 
   $features = array(
-    'monthly_cost'            => array(
-      'label'      => __( 'Monthly Cost', 'tta' ),
-      'non_member' => '$0',
-      'basic'      => '$10',
-      'premium'    => '$17',
+    'monthly_cost' => array(
+      'label'  => __( 'Monthly Cost', 'tta' ),
+      'values' => array(
+        'non_member' => '$0',
+        'basic'      => '$10',
+        'premium'    => '$17',
+      ),
     ),
-    'monthly_new_friend_social' => array(
-      'label'      => __( 'Monthly New Friend Social', 'tta' ),
-      'non_member' => __( 'Free', 'tta' ),
-      'basic'      => __( 'Free', 'tta' ),
-      'premium'    => __( 'Free', 'tta' ),
+    'discount_25' => array(
+      'label'  => __( '25% Discount on Events', 'tta' ),
+      'values' => array(
+        'non_member' => '',
+        'basic'      => array( 'check' => true ),
+        'premium'    => '',
+      ),
     ),
-    'classic_events' => array(
-      'label'      => __( '3+ Classic Events Monthly', 'tta' ),
-      'non_member' => '$5 ' . __( 'access passes', 'tta' ),
-      'basic'      => __( 'Free access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'special_events' => array(
-      'label'      => __( '3+ Special Events Monthly', 'tta' ),
-      'non_member' => '$7 ' . __( 'access passes', 'tta' ),
-      'basic'      => '$5 ' . __( 'access passes', 'tta' ),
-      'premium'    => __( 'Free access passes', 'tta' ),
-    ),
-    'guess_pass' => array(
-      'label'      => __( 'Guest Pass', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( '1 Pass', 'tta' ),
-      'premium'    => __( '1 Pass', 'tta' ),
+    'discount_50' => array(
+      'label'  => __( '50% Discount on Events', 'tta' ),
+      'values' => array(
+        'non_member' => '',
+        'basic'      => '',
+        'premium'    => array( 'check' => true ),
+      ),
     ),
     'waitlist_notice' => array(
-      'label'      => __( 'Advanced Notice on Waitlist Openings', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'Yes', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
-    ),
-    'special_rates' => array(
-      'label'      => __( 'Special Rates for Select Events', 'tta' ),
-      'non_member' => __( 'No', 'tta' ),
-      'basic'      => __( 'No', 'tta' ),
-      'premium'    => __( 'Yes', 'tta' ),
+      'label'  => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
+      'values' => array(
+        'non_member' => '',
+        'basic'      => array( 'check' => true ),
+        'premium'    => array( 'check' => true ),
+      ),
     ),
   );
+
+  $render_membership_value = static function ( $value ) {
+    if ( is_array( $value ) && ! empty( $value['check'] ) ) {
+      return array(
+        'class' => 'tta-membership-check-cell',
+        'html'  => '<span class="tta-membership-check" aria-hidden="true">✓</span><span class="screen-reader-text">' . esc_html__( 'Included', 'tta' ) . '</span>',
+      );
+    }
+
+    if ( '' === $value || null === $value ) {
+      return array(
+        'class' => '',
+        'html'  => '',
+      );
+    }
+
+    return array(
+      'class' => '',
+      'html'  => esc_html( $value ),
+    );
+  };
 ?>
 
   <table class="tta-membership-table">
@@ -97,7 +108,11 @@ echo do_shortcode( $header_shortcode );
         <tr>
           <td><?php echo esc_html( $feature['label'] ); ?></td>
           <?php foreach ( $tiers as $tier_key => $tier_label ) : ?>
-            <td><?php echo esc_html( $feature[ $tier_key ] ); ?></td>
+            <?php
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '' );
+            $cell_class     = $rendered_value['class'] ? ' class="' . esc_attr( $rendered_value['class'] ) . '"' : '';
+            ?>
+            <td<?php echo $cell_class; ?>><?php echo $rendered_value['html']; ?></td>
           <?php endforeach; ?>
         </tr>
       <?php endforeach; ?>
@@ -124,9 +139,13 @@ echo do_shortcode( $header_shortcode );
         <h2><?php echo esc_html( $tier_label ); ?></h2>
         <ul>
           <?php foreach ( $features as $feature ) : ?>
+            <?php
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '' );
+            $value_class    = $rendered_value['class'] ? ' ' . esc_attr( $rendered_value['class'] ) : '';
+            ?>
             <li>
               <span class="tta-feature-label"><?php echo esc_html( $feature['label'] ); ?></span>
-              <span class="tta-feature-value"><?php echo esc_html( $feature[ $tier_key ] ); ?></span>
+              <span class="tta-feature-value<?php echo $value_class; ?>"><?php echo $rendered_value['html']; ?></span>
             </li>
           <?php endforeach; ?>
         </ul>
