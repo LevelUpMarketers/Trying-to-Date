@@ -7,8 +7,8 @@ class TTA_Comms_Admin {
 
     public function register_menu(){
         add_menu_page(
-            'TTA Email & SMS',
-            'TTA Email & SMS',
+            'TTD Email & SMS',
+            'TTD Email & SMS',
             'manage_options',
             'tta-comms',
             [ $this, 'render_page' ],
@@ -243,7 +243,7 @@ class TTA_Comms_Admin {
         ];
         $current = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ? $_GET['tab'] : 'templates';
 
-        echo '<h1>TTA Email & SMS</h1><h2 class="nav-tab-wrapper">';
+        echo '<h1>TTD Email & SMS</h1><h2 class="nav-tab-wrapper">';
         foreach ( $tabs as $slug => $label ) {
             $class = $current === $slug ? ' nav-tab-active' : '';
             $url   = esc_url( add_query_arg( [ 'page' => 'tta-comms', 'tab' => $slug ], admin_url( 'admin.php' ) ) );

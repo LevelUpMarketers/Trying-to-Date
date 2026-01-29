@@ -15,8 +15,8 @@ class TTA_Members_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Members',
-            'TTA Members',
+            'TTD Members',
+            'TTD Members',
             'manage_options',
             'tta-members',
             [ $this, 'render_list' ],

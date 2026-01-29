@@ -15,8 +15,8 @@ class TTA_Ads_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Ads',
-            'TTA Ads',
+            'TTD Ads',
+            'TTD Ads',
             'manage_options',
             'tta-ads',
             [ $this, 'render_page' ],
@@ -29,7 +29,7 @@ class TTA_Ads_Admin {
         $tabs    = [ 'create' => 'Create Ad', 'manage' => 'Manage Ads' ];
         $current = isset( $_GET['tab'] ) && isset( $tabs[ $_GET['tab'] ] ) ? $_GET['tab'] : 'create';
 
-        echo '<h1>TTA Ads</h1><h2 class="nav-tab-wrapper">';
+        echo '<h1>TTD Ads</h1><h2 class="nav-tab-wrapper">';
         foreach ( $tabs as $slug => $label ) {
             $class = $current === $slug ? ' nav-tab-active' : '';
             $url   = esc_url( add_query_arg( [ 'page' => 'tta-ads', 'tab' => $slug ], admin_url( 'admin.php' ) ) );

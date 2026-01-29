@@ -11,8 +11,8 @@ class TTA_Events_Admin {
 
     public function register_menu() {
         add_menu_page(
-            'TTA Events',
-            'TTA Events',
+            'TTD Events',
+            'TTD Events',
             'manage_options',
             'tta-events',
             [ $this, 'render_page' ],

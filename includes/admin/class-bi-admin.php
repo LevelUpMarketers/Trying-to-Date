@@ -11,8 +11,8 @@ class TTA_BI_Admin {
     }
     public function register_menu() {
         add_menu_page(
-            'TTA BI Dashboard',
-            'TTA BI Dashboard',
+            'TTD BI Dashboard',
+            'TTD BI Dashboard',
             'manage_options',
             'tta-bi-dashboard',
             [ $this, 'render_page' ],
@@ -27,7 +27,7 @@ class TTA_BI_Admin {
             'members'  => 'Membership Metrics',
         ];
 
-        echo '<div class="wrap"><h1>TTA BI Dashboard</h1><h2 class="nav-tab-wrapper">';
+        echo '<div class="wrap"><h1>TTD BI Dashboard</h1><h2 class="nav-tab-wrapper">';
         foreach ( $tabs as $slug => $label ) {
             $class = $tab === $slug ? ' nav-tab-active' : '';
             printf( '<a href="%s" class="nav-tab%s">%s</a>',
