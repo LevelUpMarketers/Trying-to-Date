@@ -11,7 +11,11 @@ $context = tta_get_current_user_context();
 
 if ( ! $context['is_logged_in'] ) {
     get_header();
-    $header_shortcode = '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(https://trying-to-adult-rva-2025.local/wp-content/uploads/2022/12/IMG-4418.png?id=70) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">EVENT CHECK-IN</p>[/vc_column_text][/vc_column][/vc_row]';
+    $header_image_url = esc_url( add_query_arg( 'id', '70', home_url( '/wp-content/uploads/2022/12/IMG-4418.png' ) ) );
+    $header_shortcode = sprintf(
+        '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(%s) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">EVENT CHECK-IN</p>[/vc_column_text][/vc_column][/vc_row]',
+        $header_image_url
+    );
     echo do_shortcode( $header_shortcode );
 
     $form_html   = wp_login_form( [ 'echo' => false, 'redirect' => get_permalink() ] );
@@ -46,7 +50,11 @@ $events       = array_values( array_filter( $events, function ( $e ) use ( $cuto
 $today  = current_time( 'Y-m-d' );
 
 get_header();
-$header_shortcode = '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(https://trying-to-adult-rva-2025.local/wp-content/uploads/2022/12/IMG-4418.png?id=70) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">EVENT CHECK-IN</p>[/vc_column_text][/vc_column][/vc_row]';
+$header_image_url = esc_url( add_query_arg( 'id', '70', home_url( '/wp-content/uploads/2022/12/IMG-4418.png' ) ) );
+$header_shortcode = sprintf(
+    '[vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1670382516702{background-image: url(%s) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column][vc_empty_space height="300px" el_id="jre-header-title-empty"][vc_column_text css_animation="slideInLeft" el_id="jre-homepage-id-1" css=".vc_custom_1671885403487{margin-left: 50px !important;padding-left: 50px !important;}"]<p id="jre-homepage-id-3">EVENT CHECK-IN</p>[/vc_column_text][/vc_column][/vc_row]',
+    $header_image_url
+);
 echo do_shortcode( $header_shortcode );
 ?>
 <div class="tta-checkin-wrap">
