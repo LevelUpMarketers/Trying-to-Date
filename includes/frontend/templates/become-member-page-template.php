@@ -46,34 +46,47 @@ echo do_shortcode( $header_shortcode );
         'premium'    => '$17',
       ),
     ),
-    'discount_25' => array(
-      'label'  => __( '25% Discount on Events', 'tta' ),
+    'monthly_singles_social' => array(
+      'label'  => __( 'Monthly Singles Social', 'tta' ),
       'values' => array(
-        'non_member' => '',
-        'basic'      => array( 'check' => true ),
-        'premium'    => '',
+        'non_member' => '$10',
+        'basic'      => '$5',
+        'premium'    => __( 'Free', 'tta' ),
       ),
     ),
-    'discount_50' => array(
-      'label'  => __( '50% Discount on Events', 'tta' ),
+    'special_dating_events' => array(
+      'label'  => __( 'Special Dating Events', 'tta' ),
       'values' => array(
         'non_member' => '',
-        'basic'      => '',
-        'premium'    => array( 'check' => true ),
+        'basic'      => __( '20% Discount', 'tta' ),
+        'premium'    => __( '50% Discount', 'tta' ),
       ),
     ),
     'waitlist_notice' => array(
       'label'  => __( 'Advanced Notice on Waitlist Opening', 'tta' ),
       'values' => array(
         'non_member' => '',
-        'basic'      => array( 'check' => true ),
-        'premium'    => array( 'check' => true ),
+        'basic'      => array(
+          'check'       => true,
+          'mobile_text' => __( 'Included', 'tta' ),
+        ),
+        'premium'    => array(
+          'check'       => true,
+          'mobile_text' => __( 'Included', 'tta' ),
+        ),
       ),
     ),
   );
 
-  $render_membership_value = static function ( $value ) {
+  $render_membership_value = static function ( $value, $context ) {
     if ( is_array( $value ) && ! empty( $value['check'] ) ) {
+      if ( 'mobile' === $context ) {
+        return array(
+          'class' => '',
+          'html'  => esc_html( $value['mobile_text'] ?? '' ),
+        );
+      }
+
       return array(
         'class' => 'tta-membership-check-cell',
         'html'  => '<span class="tta-membership-check" aria-hidden="true">✓</span><span class="screen-reader-text">' . esc_html__( 'Included', 'tta' ) . '</span>',
@@ -109,7 +122,7 @@ echo do_shortcode( $header_shortcode );
           <td><?php echo esc_html( $feature['label'] ); ?></td>
           <?php foreach ( $tiers as $tier_key => $tier_label ) : ?>
             <?php
-            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '' );
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '', 'table' );
             $cell_class     = $rendered_value['class'] ? ' class="' . esc_attr( $rendered_value['class'] ) . '"' : '';
             ?>
             <td<?php echo $cell_class; ?>><?php echo $rendered_value['html']; ?></td>
@@ -140,7 +153,7 @@ echo do_shortcode( $header_shortcode );
         <ul>
           <?php foreach ( $features as $feature ) : ?>
             <?php
-            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '' );
+            $rendered_value = $render_membership_value( $feature['values'][ $tier_key ] ?? '', 'mobile' );
             $value_class    = $rendered_value['class'] ? ' ' . esc_attr( $rendered_value['class'] ) : '';
             ?>
             <li>
